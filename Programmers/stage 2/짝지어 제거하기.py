@@ -1,14 +1,10 @@
 def solution(s):
+    s = list(s)
     stack = []
-
-    for i in range(len(s)):
-        if not stack:
-            stack.append(s[i])
-        elif stack[-1] == s[i]:
+    while s :
+        if not stack or stack[-1] != s[-1] :
+            stack.append(s.pop())
+        else :
             stack.pop()
-        else:
-            stack.append(s[i])
-
-    if not stack:
-        return 1
-    return 0
+            s.pop()
+    return 1 if not stack else 0
